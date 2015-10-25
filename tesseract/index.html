@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Tesseract</title>
+
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css"/>
+
+	<link rel="stylesheet" type="text/css" href="jquery.tree.min.css"/>
+
+	<!-- Custom styles for this template -->
+	<link href="tesseract.css" rel="stylesheet">
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<script src="http://code.highcharts.com/highcharts.js"></script>
+	<script type="text/javascript" src="jquery.tree.min.js"></script>
+	<script src="tesseract.js"></script>
+</head>
+<body>
+
+<div class="blog-masthead">
+	<div class="container">
+		<ul class="list-inline" data-tabs="tabs">
+			<li><a class="nav-link" data-linkto="home" href="#">Home</a></li>
+			<li><a class="nav-link" data-linkto="try-tesseract" href="#">Try Tesseract</a></li>
+			<li><a class="nav-link" data-linkto="view-result" href="#">View Results</a></li>
+			<li><a class="nav-link" data-linkto="feedback" href="#">Submit Feedback</a></li>
+		</ul>
+	</div>
+</div>
+
+
+<div class="tess-img"></div>
+
+<div class="home nav-content">
+	Hello Home
+</div>
+
+<div class="try-tesseract nav-content container hidden">
+
+	<div class="try-part1 row">
+		<div class="row try-radio">
+			<input name="radioGroup" id="radio1" value="option1" type="radio"> Verify Correctness of the match you have
+		</div>
+		<div class="row try-radio">
+			<input name="radioGroup" id="radio2" value="option1" type="radio"> Given Application Details, Find optimal
+			Architecture Choice
+		</div>
+		<div class="row try-radio">
+			<input name="radioGroup" id="radio3" value="option1" type="radio"> Given Architecture Details, Find matching
+			algorithm classes for best utilization of the performance power
+		</div>
+	</div>
+
+
+	<div class="try-part2 row hidden">
+		<div class="stepwizard col-md-offset-3">
+			<div class="stepwizard-row setup-panel">
+				<div class="stepwizard-step">
+					<a href="#step-1" type="button" class="btn btn-primary btn-default btn-circle">1</a>
+
+					<p>Choose Algorithm</p>
+				</div>
+				<div class="stepwizard-step">
+					<a href="#step-2" type="button" class="btn btn-default btn-circle">2</a>
+
+					<p>Choose Arch</p>
+				</div>
+				<div class="stepwizard-step">
+					<a href="#step-3" type="button" class="btn btn-default btn-circle">3</a>
+
+					<p>Evaluate Match</p>
+				</div>
+				<div class="stepwizard-step">
+					<a href="#step-4" type="button" class="btn btn-default btn-circle">4</a>
+
+					<p>Evaluate Better alternatives</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row setup-content" id="step-1">
+			<div class="col-md-offset-3 col-md-8">
+				<div class="row col-md-6">
+					<select class="form-control">
+						<option value="one">One</option>
+						<option value="two">Two</option>
+						<option value="three">Three</option>
+						<option value="four">Four</option>
+						<option value="five">Five</option>
+					</select>
+				</div>
+				<div class="row col-md-10 option-select-algorithm">
+					<div class="row">
+						<div class="col-md-6">Time Complexity:</div>
+						<div class="col-md-6">
+							<label class="radio-inline"><input type="radio" name="optradio">High</label>
+							<label class="radio-inline"><input type="radio" name="optradio">Low</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">FLOP-to-NON FLOP Ratio:</div>
+						<div class="col-md-6">
+							<label class="radio-inline"><input type="radio" name="optradio">High</label>
+							<label class="radio-inline"><input type="radio" name="optradio">Low</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">Memory Access Behavior::</div>
+						<div class="col-md-6">
+							<label class="radio-inline"><input type="radio" name="optradio">Bad</label>
+							<label class="radio-inline"><input type="radio" name="optradio">Good</label>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="row setup-content" id="step-2">
+			<div class="col-md-offset-3 col-md-8">
+				<div id="tree">
+					<ul>
+						<li>
+							<input type="checkbox"/><span>CPU</span>
+							<ul>
+								<li>
+									<input type="checkbox"/><span>AMD XYZ</span>
+
+								</li>
+								<li>
+									<input type="checkbox"/><span>Intel</span>
+
+								</li>
+							</ul>
+						</li>
+						<li>
+							<input type="checkbox"/><span>GPU</span>
+							<ul>
+								<li>
+									<input type="checkbox"/><span>Nvidia</span>
+
+								</li>
+								<li>
+									<input type="checkbox"/><span>PQR</span>
+
+								</li>
+							</ul>
+						</li>
+						<li>
+							<input type="checkbox"/><span>MIC</span>
+							<ul>
+								<li>
+									<input type="checkbox"/><span>Intel XEON PHI</span>
+
+								</li>
+								<li>
+									<input type="checkbox"/><span>ABC</span>
+
+								</li>
+							</ul>
+						</li>
+						<li>
+							<input type="checkbox"/><span>FPGA</span>
+							<ul>
+								<li>
+									<input type="checkbox"/><span>Altera</span>
+
+								</li>
+								<li>
+									<input type="checkbox"/><span>Xilinx</span>
+
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+
+		</div>
+		<div class="row setup-content" id="step-3">
+			<div class="col-md-offset-3 col-md-8">
+				<div class="row">
+					<div class="col-md-6">
+						<p>Given the cha of Algorithm,
+
+							------
+						</p>
+
+						<p>
+
+							And how it matches/does not complement chac of chosen arch
+						</p>
+
+						<p>
+							Degree of Match : Best/Moderate/Worst</p>
+					</div>
+					<div class="col-md-6 left-chart">
+						<div class="row col-md-offset-1">
+							<div class="row ">
+								<p>Algorithm: Linear Algebra CRC</p>
+							</div>
+							<div class="row try-radio">
+								<p>Architecture: Intel ABC</p>
+							</div>
+						</div>
+						<div class="row">
+							<div id="highchart-container" style="width: 300px; height:300px;"></div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		<div class="row setup-content" id="step-4">
+			<div class="col-md-offset-3 col-md-8">
+				<table class="table table-striped">
+					<thead>
+					<tr>
+						<th>Architecture Alternatives</th>
+						<th>Degree Of Match</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>GPU</td>
+						<td>BEST</td>
+					</tr>
+					<tr>
+						<td>Mic</td>
+						<td>MODERATE</td>
+					</tr>
+					<tr>
+						<td>FPGA</td>
+						<td>WORST</td>
+					</tr>
+					</tbody>
+				</table>
+				<button class="btn btn-primary">View Relevant Results</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+<div class="view-result nav-content container hidden">
+	<div class="row">
+		<div class="row col-md-3">
+			<div class="row">
+				<p>Choose An Algorithm Class:</p>
+
+
+				<select class="form-control">
+					<option value="one">One</option>
+					<option value="two">Two</option>
+					<option value="three">Three</option>
+					<option value="four">Four</option>
+					<option value="five">Five</option>
+				</select>
+			</div>
+			<div class="row result-left-below-row">
+				<p>Choose Closest Matching Appication:</p>
+				<select class="form-control">
+					<option value="one">One</option>
+					<option value="two">Two</option>
+					<option value="three">Three</option>
+					<option value="four">Four</option>
+					<option value="five">Five</option>
+				</select>
+			</div>
+			<div class="row result-left-below-row pull-right">
+				<button class="btn btn-primary show-graph">Show Graph</button>
+			</div>
+
+		</div>
+		<div class="row col-md-6 pull-right">
+			<div id="highchart-container-result" style="width: 300px; height:300px;"></div>
+		</div>
+	</div>
+</div>
+
+<div class="feedback nav-content container hidden">
+	<div class="row" style="margin-left: 50px; margin-top: 35px;">
+		<div class="row">
+			<label class="radio-inline"><input type="radio" name="optradio">Let us know how the prediction turned out for you</label>
+		</div>
+		<div class="row">
+			<label class="radio-inline"><input type="radio" name="optradio">Let us know if you have Questions</label>
+		</div>
+		<div class="row">
+			<label class="radio-inline"><input type="radio" name="optradio">Let us know if you have any suggestions</label>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
