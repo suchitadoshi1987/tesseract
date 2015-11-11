@@ -609,7 +609,7 @@ $(document).ready(function () {
 
 			matchingApplications.forEach(function (app) {
 
-				var chartContainer = '<div class="row col-md-offset-1"> <div class="row "> <p class="evaluate-algorithm">Algorithm: '+app.algo_class+'</p> </div> <div class="row try-radio"> <p class="evaluate-architecture">Architecture: '+app.application_name+'</p> </div> </div> <div class="row"> <div id="highchart-container-'+(chartCount)+'" style="width: 300px; height:300px;"></div> </div>'
+				var chartContainer = '<div class="row col-md-offset-1"> <div class="row "> <p class="evaluate-algorithm">Algorithm: '+app.algo_class+'</p> </div> <div class="row try-radio"> <p class="evaluate-architecture">Application: '+app.application_name+'</p> </div> </div> <div class="row"> <div id="highchart-container-'+(chartCount)+'" style="width: 300px; height:300px;"></div> </div>'
 				$('.evaluate-chart').append(chartContainer);
 
 				$('#highchart-container-'+chartCount).highcharts({
