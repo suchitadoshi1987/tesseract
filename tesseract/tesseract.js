@@ -602,7 +602,7 @@ $(document).ready(function () {
 		var flop = $('input[name="FLOPs_ratio"]:checked').val();
 		var memAcc = $('input[name="memory_access_frequency"]:checked').val();
 		$('.evaluate-chart').html('');
-		if($('.try-tesseract-algorithm').val()=== 'Other' && $('.try-tesseract-matching-application').val() === 'Other'){
+		if($('.try-tesseract-algorithm').val()=== 'Other' ||  $('.try-tesseract-matching-application').val() === 'Other'){
 			var matchingApplications = applicationAlgo.filter(function(item) {
 				return item.time_complexity === timeCom && item.dominant_memory_access_ratio === domi && item.FLOPs_ratio === flop && item.memory_access_frequency === memAcc;
 			});
