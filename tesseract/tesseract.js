@@ -242,7 +242,7 @@ var applicationAlgo = [
 	},
 
 	{
-		algo_class: "Dynmaic Programming",
+		algo_class: "Dynamic Programming",
 		application_name: "Needleman-Wunsch",
 		time_complexity: "High",
 		FLOPs_ratio: "Low",
@@ -454,6 +454,9 @@ $(document).ready(function () {
 		var $highchartSelector = $('#highchart-container-result');
 		$highchartSelector.html('');
 		$highchartSelector.highcharts({
+			credits: {
+				enabled: false
+			},
 			chart: {
 				type: 'line'
 			},
@@ -533,6 +536,9 @@ $(document).ready(function () {
 	});
 	var initialAppValue = applicationAlgo.filter(function(item){return item.application_name === 'K-means vary data size'})[0];
 	$('#highchart-container-initial').highcharts({
+		credits: {
+			enabled: false
+		},
 		chart: {
 			type: 'line'
 		},
@@ -607,6 +613,9 @@ $(document).ready(function () {
 				$('.evaluate-chart').append(chartContainer);
 
 				$('#highchart-container-'+chartCount).highcharts({
+					credits: {
+						enabled: false
+					},
 					chart: {
 						type: 'line'
 					},
@@ -644,6 +653,9 @@ $(document).ready(function () {
 			var chartContainer = '<div class="row col-md-offset-1"> <div class="row "> <p class="evaluate-algorithm">Algorithm: '+selectedApplication.algo_class+'</p> </div> <div class="row try-radio"> <p class="evaluate-architecture">Application: '+selectedApplication.application_name+'</p> </div> </div> <div class="row"> <div id="highchart-container-'+(chartCount)+'" style="width: 300px; height:300px;"></div> </div>'
 			$('.evaluate-chart').append(chartContainer);
 			$('#highchart-container-'+chartCount).highcharts({
+				credits: {
+					enabled: false
+				},
 				chart: {
 					type: 'line'
 				},
