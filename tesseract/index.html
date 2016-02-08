@@ -21,96 +21,67 @@
 	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-	<script src="http://code.highcharts.com/highcharts.js"></script>
+	<script src="http://github.highcharts.com/master/highcharts.src.js"></script>
 	<script type="text/javascript" src="jquery.tree.min.js"></script>
 	<script src="tesseract.js"></script>
 </head>
 <body>
+<div class="navbar navbar-default navbar-fixed-top">
+	<div class="navbar-header"><img src="transparent.gif" width="15%" style="margin-top: 5px"/><a class="navbar-brand" href="#">Tesseract</a>
+		<a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</a>
+	</div>
+</div>
+<div id="wrapper">
 
-<div class="blog-masthead">
-	<div class="container">
-		<ul class="list-inline" data-tabs="tabs">
+	<div id="sidebar-wrapper">
+		<ul class="sidebar-nav">
 			<li><a class="nav-link" data-linkto="home" href="#">Home</a></li>
 			<li><a class="nav-link try-tesseract-top-link" data-linkto="try-tesseract" href="#">Try Tesseract</a></li>
 			<li><a class="nav-link" data-linkto="view-result" href="#">View Results</a></li>
 			<li><a class="nav-link" data-linkto="feedback" href="#">Submit Feedback</a></li>
 		</ul>
 	</div>
+	<div id="page-content-wrapper">
+		<div class="page-content">
+
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 
-<div class="tess-img"></div>
 
-<div class="home nav-content">
-	Hello Home
+
+<div class="home container nav-content col-md-offset-2">
+	<h2 class="home-header blue-header">Tesseract <img class="home-header-img" src="transparent.gif"/></h2>
+	<div class="home-details">
+		<p>Details</p>
+	</div>
 </div>
 
 <div class="try-tesseract nav-content container hidden">
 
 
 
-
+	<h2 class="try-header blue-header">Try Tesseract</h2>
 	<div class="try-part2 row">
-		<div class="stepwizard col-md-offset-3">
-			<div class="stepwizard-row setup-panel">
-				<div class="stepwizard-step">
-					<a href="#step-1" type="button" class="btn btn-primary btn-default btn-circle step1wizard">1</a>
 
-					<p>Choose Algorithm</p>
-				</div>
-				<div class="stepwizard-step">
-					<a href="#step-2" type="button" class="btn btn-default btn-circle step2wizard">2</a>
-
-					<p>Choose Arch</p>
-				</div>
-				<div class="stepwizard-step">
-					<a href="#step-3" type="button" class="btn btn-default btn-circle step3wizard">3</a>
-
-					<p>Evaluate Match</p>
-				</div>
-				<!--<div class="stepwizard-step">-->
-					<!--<a href="#step-4" type="button" class="btn btn-default btn-circle">4</a>-->
-
-					<!--<p>Evaluate Better alternatives</p>-->
-				<!--</div>-->
-			</div>
-		</div>
 
 		<div class="row setup-content" id="step-1">
+
 			<div class="col-md-offset-3 col-md-8">
-				<div class="row col-md-5">
-					<div class="row">
-						<p>Choose An Algorithm Class:</p>
 
-
-						<select class="form-control try-tesseract-algorithm">
-							<option value="Linear Algebra">Linear Algebra</option>
-							<option value="Divide and conquer">Divide and conquer</option>
-							<option value="Grid">Grid</option>
-							<option value="N-Body">N-Body</option>
-							<option value="Logic">Logic</option>
-							<option value="Dynamic Programming">Dynamic Programming</option>
-							<option value="Graph Models">Graph Models</option>
-							<option value="Graph Traversal">Graph Traversal</option>
-							<option value="Sort">Sort</option>
-							<option value="Other">Other</option>
-						</select>
-					</div>
-					<div class="row result-left-below-row">
-						<p>Choose Closest Matching Application:</p>
-						<select class="form-control try-tesseract-matching-application">
-							<option value="K-means vary data size">K-means vary data size</option>
-							<option value="K-means vary cluster">K-means vary cluster</option>
-							<option value="K-means vary dimensions">K-means vary dimensions</option>
-							<option value="Lower Upper Decomposition LUD">Lower Upper Decomposition LUD</option>
-							<option value="Sparse Matrix Vector SPMV">Sparse Matrix Vector SPMV</option>
-							<option value="Triad">Triad</option>
-							<option value="Other">Other</option>
-						</select>
-					</div>
-
-				</div>
-				<div class="row col-md-10 option-select-algorithm hidden">
+				<div class="row col-md-10 option-select-algorithm ">
 					<div class="row">
 						<div class="col-md-6">Time Complexity:</div>
 						<div class="col-md-6">
@@ -139,35 +110,40 @@
 							<label class="radio-inline"><input type="radio" name="memory_access_frequency" value="Low">Low</label>
 						</div>
 					</div>
-
+					<button class="btn btn-primary find-match pull-right">Find Match</button>
 				</div>
-			</div>
-		</div>
-		<div class="row setup-content" id="step-2">
-			<div class="col-md-offset-3 col-md-8">
-				<p class="best-architecture"></p>
 
 			</div>
-
 		</div>
+		<!--<div class="row setup-content" id="step-2">-->
+			<!--<div class="col-md-offset-3 col-md-8">-->
+				<!-- -->
+
+			<!--</div>-->
+
+		<!--</div>-->
 		<div class="row setup-content" id="step-3">
-			<div class="col-md-offset-3 col-md-8">
+			<div class="col-md-offset-2">
 				<div class="row">
 					<div class="col-md-6">
-						<p>Given the cha of Algorithm,
+						<p class="best-architecture"></p>
+						<!--<p>Given the cha of Algorithm,-->
 
-							------
-						</p>
+							<!--&#45;&#45;&#45;&#45;&#45;&#45;-->
+						<!--</p>-->
 
-						<p>
+						<!--<p>-->
 
-							And how it matches/does not complement chac of chosen arch
-						</p>
+							<!--And how it matches/does not complement chac of chosen arch-->
+						<!--</p>-->
 
-						<p>
-							Degree of Match : Best/Moderate/Worst</p>
+						<!--<p>-->
+							<!--Degree of Match : Best/Moderate/Worst</p>-->
 					</div>
-					<div class="col-md-6 left-chart evaluate-chart">
+				</div>
+				<div class="">
+
+					<div class="col-md-12 evaluate-chart">
 						<div class="row col-md-offset-1">
 							<div class="row ">
 								<p class="evaluate-algorithm">Algorithm: Linear Algebra</p>
@@ -216,10 +192,11 @@
 		<!--</div>-->
 	</div>
 </div>
-<div class="view-result nav-content container hidden">
-	<div class="row">
-		<div class="row col-md-3">
-			<div class="row">
+<div class="view-result nav-content container view-result-81 hidden">
+	<h2 class="try-header blue-header">View Results</h2>
+	<div class="row col-md-offset-3 view-result-81">
+		<div class="row ">
+			<div class="col-md-6">
 				<p>Choose An Algorithm Class:</p>
 
 
@@ -235,7 +212,7 @@
 					<option value="Sort">Sort</option>
 				</select>
 			</div>
-			<div class="row result-left-below-row">
+			<div class="col-md-6">
 				<p>Choose Closest Matching Appication:</p>
 				<select class="form-control matching-application">
 					<option value="K-means vary data size">K-means vary data size</option>
@@ -251,13 +228,20 @@
 			</div>
 
 		</div>
-		<div class="row col-md-6 pull-right">
-			<div id="highchart-container-result" style="width: 300px; height:300px;"></div>
+		<div class="row result-left-below-row">
+			<div class="col-md-6">
+				<table class="result-table table table-striped">
+
+				</table>
+			</div>
+			<div class="col-md-6"><div id="highchart-container-result" style="width: 400px; height:300px;"></div></div>
+
 		</div>
 	</div>
 </div>
 
-<div class="feedback nav-content container hidden">
+<div class="feedback nav-content container hidden view-result-81">
+	<h2 class="try-header blue-header">Submit Feedback</h2>
 	<div class="row" style="margin-left: 425px; margin-top: 35px;">
 		<!-- Do not change the code! -->
 		<a id="foxyform_embed_link_720795" href="http://www.foxyform.com/"></a>

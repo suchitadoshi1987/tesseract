@@ -451,6 +451,11 @@ $(document).ready(function () {
 			return item.application_name === $('.matching-application').val()
 		})[0];
 
+
+		$('.result-table').html('<tr><td>Time Complexity</td><td>'+selectedApplication.time_complexity+'</td>' +
+			'<tr><td>FLOP-to-NON FLOP Ratio</td><td>'+selectedApplication.FLOPs_ratio+'</td></tr>' +
+			'<tr><td>Dominant Memory Access Ratio</td><td>'+selectedApplication.dominant_memory_access_ratio+'</td></tr>' +
+			'<tr><td>Memory Access Frequency</td><td>'+selectedApplication.memory_access_frequency+'</td></tr>')
 		var $highchartSelector = $('#highchart-container-result');
 		$highchartSelector.html('');
 		$highchartSelector.highcharts({
@@ -584,8 +589,17 @@ $(document).ready(function () {
 			}
 		}
 	});
+	//
+	//$('.find-match').on('click', function () {
+	//	var timeCom = $('input[name="time_complexity"]:checked').val();
+	//	var domi = $('input[name="dominant_memory_access_ratio"]:checked').val();
+	//	var flop = $('input[name="FLOPs_ratio"]:checked').val();
+	//	var memAcc = $('input[name="memory_access_frequency"]:checked').val();
+	//
+	//});
 
-	$('.step2wizard').on('click', function () {
+	$('.find-match').on('click', function () {
+		$('#step-3').show();
 		var timeCom = $('input[name="time_complexity"]:checked').val();
 		var domi = $('input[name="dominant_memory_access_ratio"]:checked').val();
 		var flop = $('input[name="FLOPs_ratio"]:checked').val();
@@ -594,22 +608,15 @@ $(document).ready(function () {
 			return item.time_complexity === timeCom && item.dominant_memory_access_ratio === domi && item.FLOPs_ratio === flop && item.memory_access_frequency === memAcc
 		});
 		$('.best-architecture').html('Best Architecture: '+ bestAlgo[0].Best_Arch)
-	});
-
-	$('.step3wizard').on('click', function () {
-		var timeCom = $('input[name="time_complexity"]:checked').val();
-		var domi = $('input[name="dominant_memory_access_ratio"]:checked').val();
-		var flop = $('input[name="FLOPs_ratio"]:checked').val();
-		var memAcc = $('input[name="memory_access_frequency"]:checked').val();
 		$('.evaluate-chart').html('');
-		if($('.try-tesseract-algorithm').val()=== 'Other' ||  $('.try-tesseract-matching-application').val() === 'Other'){
+
 			var matchingApplications = applicationAlgo.filter(function(item) {
 				return item.time_complexity === timeCom && item.dominant_memory_access_ratio === domi && item.FLOPs_ratio === flop && item.memory_access_frequency === memAcc;
 			});
 
 			matchingApplications.forEach(function (app) {
 
-				var chartContainer = '<div class="row col-md-offset-1"> <div class="row "> <p class="evaluate-algorithm">Algorithm: '+app.algo_class+'</p> </div> <div class="row try-radio"> <p class="evaluate-architecture">Application: '+app.application_name+'</p> </div> </div> <div class="row"> <div id="highchart-container-'+(chartCount)+'" style="width: 300px; height:300px;"></div> </div>'
+				var chartContainer = '<div class="col-md-6 chart-section"> <div class="row "> <p class="evaluate-algorithm">Algorithm: '+app.algo_class+'</p> </div> <div class="row try-radio"> <p class="evaluate-architecture">Application: '+app.application_name+'</p> </div> <div id="highchart-container-'+(chartCount)+'" style="width: 300px; height:300px;"></div> </div>'
 				$('.evaluate-chart').append(chartContainer);
 
 				$('#highchart-container-'+chartCount).highcharts({
@@ -644,49 +651,12 @@ $(document).ready(function () {
 				});
 				chartCount++;
 			});
-		}
-		else {
-			var selectedApplication = applicationAlgo.filter(function (item) {
-				return item.application_name === $('.try-tesseract-matching-application').val()
-			})[0];
 
-			var chartContainer = '<div class="row col-md-offset-1"> <div class="row "> <p class="evaluate-algorithm">Algorithm: '+selectedApplication.algo_class+'</p> </div> <div class="row try-radio"> <p class="evaluate-architecture">Application: '+selectedApplication.application_name+'</p> </div> </div> <div class="row"> <div id="highchart-container-'+(chartCount)+'" style="width: 300px; height:300px;"></div> </div>'
-			$('.evaluate-chart').append(chartContainer);
-			$('#highchart-container-'+chartCount).highcharts({
-				credits: {
-					enabled: false
-				},
-				chart: {
-					type: 'line'
-				},
-				title: {
-					text: 'Architecture Comparision'
-				},
-				xAxis: {
-					categories: selectedApplication.xAxis_data
-				},
-				yAxis: {
-					title: {
-						text: ''
-					}
-				},
-				series: [{
-					name: 'CPU',
-					data: selectedApplication.data_cpu
-				}, {
-					name: 'GPU',
-					data: selectedApplication.data_gpu
-				}, {
-					name: 'Xeon Phi',
-					data: selectedApplication.data_phi
-				}
-				]
-			});
-		}
+
 	});
 
 	$('.try-tesseract-top-link').on('click', function () {
-		$('.step1wizard').click();
+		$('#step-1').show();
 	});
 });
 
