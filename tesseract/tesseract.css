@@ -242,6 +242,14 @@
     font-weight: bold;
     /* border-bottom-style: inset; */
 }
+
+.abc {
+    font-size: large;
+    font-style: italic;
+    font-weight: bold;
+    color: #333;
+    /* border-bottom-style: inset; */
+}
 .try-header {
     margin-left: 120px;
     margin-top: -45px;
