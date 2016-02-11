@@ -481,6 +481,8 @@ $(document).ready(function () {
 		})[0];
 
 
+		$('.predicted-architecture').html('<p>Predicted Architecture: '+selectedApplication.Best_Arch+'</p>');
+		$('.observed-architecture').html('<p>Observed Architecture: '+selectedApplication.obv_Arch+'</p>');
 		$('.result-table').html('<tr><td>Time Complexity</td><td>'+selectedApplication.time_complexity+'</td>' +
 			'<tr><td>FLOP-to-NON FLOP Ratio</td><td>'+selectedApplication.FLOPs_ratio+'</td></tr>' +
 			'<tr><td>Dominant Memory Access Ratio</td><td>'+selectedApplication.dominant_memory_access_ratio+'</td></tr>' +
@@ -498,11 +500,14 @@ $(document).ready(function () {
 				text: 'Architecture Comparision'
 			},
 			xAxis: {
-				categories: selectedApplication.xAxis_data
+				categories: selectedApplication.xAxis_data,
+				title: {
+					text: selectedApplication.x_label
+				}
 			},
 			yAxis: {
 				title: {
-					text: ''
+					text: 'TIME(S)'
 				}
 			},
 			series: [{
@@ -580,11 +585,14 @@ $(document).ready(function () {
 			text: 'Architecture Comparision'
 		},
 		xAxis: {
-			categories: initialAppValue.xAxis_data
+			categories: initialAppValue.xAxis_data,
+			title: {
+				text: initialAppValue.x_label
+			}
 		},
 		yAxis: {
 			title: {
-				text: ''
+				text: 'TIME(S)'
 			}
 		},
 		series: [{
@@ -659,11 +667,14 @@ $(document).ready(function () {
 						text: 'Architecture Comparision'
 					},
 					xAxis: {
-						categories: app.xAxis_data
+						categories: app.xAxis_data,
+						title: {
+							text: app.x_label
+						}
 					},
 					yAxis: {
 						title: {
-							text: ''
+							text: 'TIME(S)'
 						}
 					},
 					series: [{
